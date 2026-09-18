@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('price_chart', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('timestamp')->unique();
-            $table->decimal('price_eur', 10, 6);
-            $table->decimal('price_huf', 10, 2);
+            $table->dateTime('time_block')->nullable();
+            $table->string('on/off');
+            $table->text('message') -> nullable();
+            $table->boolean('success') -> default(false);
         });
 
       
@@ -26,7 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('price_chart');
+        Schema::dropIfExists('events');
        
     }
 };
