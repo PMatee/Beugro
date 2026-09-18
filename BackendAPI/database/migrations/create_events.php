@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->dateTime('time_block')->nullable();
-            $table->string('on/off');
+            $table->string('state', 3);
             $table->text('message') -> nullable();
             $table->boolean('success') -> default(false);
         });
