@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('price_chart', function (Blueprint $table) {
             $table->id();
             $table->dateTime('timestamp')->unique();
-            $table->decimal('price_eur', 10, 6);
-            $table->decimal('price_huf', 10, 2);
+            $table->decimal('price_eur_mwh', 10, 6);
+            $table->decimal('price_huf_kwh', 10, 2);
         });
 
       

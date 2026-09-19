@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'energy_charts' => ['token' => env('TOKEN'), 'eur_huf'=> 380,],
+
+
 ];

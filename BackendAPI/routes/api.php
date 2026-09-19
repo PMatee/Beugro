@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PriceController;
 
-
-
-Route::get('/', function (Request $request) {
-    return $request->price();
-})->middleware('auth:sanctum');
+use App\Http\Controllers\TimeBlockController;
+Route::get('/prices', [PriceController::class, 'index']);
+Route::get('/prices/blocks', [PriceController::class, 'blocks']);
+Route::get('/time-blocks', [TimeBlockController::class, 'index']);
+Route::post('/time-blocks', [TimeBlockController::class, 'store']);
