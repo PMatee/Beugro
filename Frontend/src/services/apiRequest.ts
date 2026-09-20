@@ -8,11 +8,24 @@ export type PricesResponse = {
     average:number
     prices: Price[]
 }
+export type Block = {
+    timestamp: string
+    eur_per_kwh: number
+    huf_per_kwh:number
+}
+export type BlockResponse = {
+    unit: string
+    average:number
+    blocks: Block[]
+}
+export type SaveResponse = {
+    saved: number
+    above_average_blocks: string[]
+}
 
-async function request(url: string){
+async function request(url: string, options?: RequestInit){
     const res = await fetch('/api' + url, {
-        method: 'GET',
-        body: null,
+        ...options,
         headers:{
             Accept: 'application/json',
             'Content-Type': 'application/json'
@@ -34,4 +47,15 @@ export function getPrices(): Promise<PricesResponse>{
 
 export function getThirtyPrices(): Promise<PricesResponse>{
     return request('/prices/blocks')
+}
+
+export function getSavedBlocks(): Promise<String>{
+    return request('/time-blocks')
+}
+
+export function saveBlocks(blocks: string[]): Promise<SaveResponse>{
+    return request('/time-blocks', {
+        method: 'POST',
+        body: JSON.stringify({blocks}),
+    })
 }
