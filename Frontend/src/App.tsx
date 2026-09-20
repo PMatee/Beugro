@@ -1,9 +1,10 @@
 
+import Heatmap from './views/HeatmapView'
 import Test from './views/TestView'
 
 function App() {
 
-  return <Test/>
+  return <Heatmap/>
 }
 
 export default App
