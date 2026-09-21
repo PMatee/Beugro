@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $table = 'events';
-    public $timestamps = false;
-    protected $fillable = ['state','message','success'];
+   public $timestamps = false;
+    protected $fillable = ['time_block', 'state', 'message', 'success', 'created_at'];
     protected $casts = [
-        'success' => 'boolean'
-        ];
+        'time_block' => 'datetime',
+        'success'    => 'boolean',
+        'created_at' => 'datetime',
+    ];
    
 }

@@ -37,5 +37,6 @@ return [
 
     'energy_charts' => ['token' => env('TOKEN'), 'eur_huf'=> 380,],
 
+    'boiler' => ['exe' => env('BOILER_EXE'), 'user' => 'bosch', 'password' => 'bosch60',],
 
 ];

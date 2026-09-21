@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('state', 3);
             $table->text('message') -> nullable();
             $table->boolean('success') -> default(false);
+            $table->dateTime('created_at')->index(); 
         });
 
       
