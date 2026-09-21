@@ -49,7 +49,7 @@ export function getThirtyPrices(): Promise<PricesResponse>{
     return request('/prices/blocks')
 }
 
-export function getSavedBlocks(): Promise<String>{
+export function getSavedBlocks(): Promise<string[]>{
     return request('/time-blocks')
 }
 
