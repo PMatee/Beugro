@@ -23,6 +23,18 @@ export type SaveResponse = {
     above_average_blocks: string[]
 }
 
+type HourPoint = {
+  hour: string
+  kwh: number
+}
+
+export type ConsumptionResponse = {
+  date: string
+  unit: string
+  total_kwh: number
+  hours: HourPoint[]
+}
+
 async function request(url: string, options?: RequestInit){
     const res = await fetch('/api' + url, {
         ...options,
@@ -58,4 +70,8 @@ export function saveBlocks(blocks: string[]): Promise<SaveResponse>{
         method: 'POST',
         body: JSON.stringify({blocks}),
     })
+}
+
+export function getConsumptionData(date?: string):Promise<ConsumptionResponse>{
+    return request(`/consumption${date ? `?date=${date}` : ''}`)
 }

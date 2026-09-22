@@ -18,7 +18,6 @@ public function sync(): int
         ->json();
 
         
-
     if (!is_array($response) || ! isset($response['data']) || ! is_array($response['data'] )) {
         throw new \RuntimeException(
             'Unexpected price API shape.'
