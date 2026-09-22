@@ -8,16 +8,7 @@ export type PricesResponse = {
     average:number
     prices: Price[]
 }
-export type Block = {
-    timestamp: string
-    eur_per_kwh: number
-    huf_per_kwh:number
-}
-export type BlockResponse = {
-    unit: string
-    average:number
-    blocks: Block[]
-}
+
 export type SaveResponse = {
     saved: number
     above_average_blocks: string[]
@@ -57,9 +48,6 @@ export function getPrices(): Promise<PricesResponse>{
         return request('/prices')
 }
 
-export function getThirtyPrices(): Promise<PricesResponse>{
-    return request('/prices/blocks')
-}
 
 export function getSavedBlocks(): Promise<string[]>{
     return request('/time-blocks')

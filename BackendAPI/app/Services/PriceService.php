@@ -93,37 +93,5 @@ public function ensureFresh(): void
         ->all();
     }
 
-    public function thirtyMinuteBlocks($prices): array{
-        return collect($prices)
-        ->groupBy(function (Price $prices){
-            $timestamp = $prices['timestamp']->copy();
-
-            $minute = floor($timestamp->minute / 30) * 30;
-
-            return $timestamp
-            ->minute($minute)
-            ->second(0)
-            ->format('Y-m-d H:i:s');
-        })
-        ->map(function ($prices, string $timestamp){
-            return [
-                'timestamp' => $timestamp,
-                'price_eur_kwh' => round($prices->avg('price_eur_mwh')/1000,6),
-                'price_huf_kwh' => round($prices->avg('price_huf_kwh'),2),
-            ];
-        })
-        ->values()
-        ->all();
-    }
-
-    public function getThirtyMinutePrices(): array{
-        $today = Carbon::today(config('app.timezone'));
-
-        $prices = Price::query()
-        ->whereDate('timestamp', $today)
-        ->orderBy('timestamp')
-        ->get();
-
-        return $this->thirtyMinuteBlocks($prices);
-    }
+    
 }

@@ -17,15 +17,4 @@ class PriceController extends Controller
             'prices' => $prices->today(),
         ]);
     }
-
-    public function blocks(PriceService $prices){
-        $prices->ensureFresh();
-
-
-         return response()->json( [
-            'unit' => 'HUF/kWh',
-            'average' => $prices->average(),
-            'prices' => $prices->getThirtyMinutePrices(),
-        ]);
-    }
 }
